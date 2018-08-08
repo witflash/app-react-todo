@@ -1,0 +1,21 @@
+.todo {
+  padding-top: 30px;
+  font-size: 20px;
+
+  &__header {
+    margin-bottom: 30px;
+  }
+
+  &__input {
+    padding: 0.5em;
+    font-size: 20px;
+  }
+
+  &__list {
+    margin: 0 auto;
+    padding: 0;
+    max-width: 500px;
+    list-style: none;
+    border: 1px solid gray;
+  }
+}
