@@ -1,31 +1,67 @@
+$delay: 300ms;
+
 .todo {
+  margin: 0 auto;
   padding-top: 30px;
-  font-size: 20px;
+  max-width: 300px;
+  font-size: 1.25rem;
+  color: black;
+
+  &__block {
+    margin-bottom: 50px;
+  }
 
   &__header {
     margin-bottom: 30px;
   }
 
   &__input {
+    display: block;
+    position: relative;
+    top: 0;
     padding: 0.5em;
-    font-size: 20px;
+    width: 100%;
+    font-size: 1.25rem;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 2px solid gray;
+    transition: $delay;
+    &:focus {
+      top: -2px;
+      outline: none;
+      border: 2px solid skyblue;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &__list {
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item-wrap {
+    display: flex;
+    align-items: center;
+    opacity: 1;
+    transition: $delay ease-in-out;
   }
 
   &__item {
     position: relative;
-    transition-duration: 300ms;
+    border-bottom: 1px solid gray;
+    transition-duration: $delay;
     &.edit {
       .todo__item-wrap {
         opacity: 0;
       }
       .todo__edit {
-        // display: block;
         z-index: 10;
         width: 100%;
         height: 100%;
-        // top: 0;
-        // left: 0;
         padding: 1em;
+        left: 0;
+        font-size: 1.375rem;
       }
     }
     &.destroy {
@@ -34,26 +70,30 @@
     }
   }
 
-  &__item-wrap {
-    opacity: 1;
-    transition: 500ms ease-in-out;
-  }
-
   &__title {
+    position: relative;
+    flex: 1 0 auto;
+    padding: 0.5em 1em;
+    text-align: left;
     user-select: none;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0.5em;
+      width: 0;
+      height: 2px;
+      background-color: lightgray;
+      transition: $delay;
+    }
   }
 
   &__toggle:checked ~ &__title {
     text-decoration: line-through;
-    color: gray;
-  }
-
-  &__list {
-    margin: 0 auto;
-    padding: 0;
-    max-width: 500px;
-    list-style: none;
-    border: 1px solid gray;
+    color: lightgray;
+    &::before {
+      width: calc(100% - 0.5em);
+    }
   }
 
   &__remove {
@@ -64,19 +104,34 @@
     display: block;
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 2.1em;
     bottom: 0;
     right: 0;
-    transform: translate(-50%, -50%);
+    transform: translateY(-50%);
     padding: 0;
     box-sizing: border-box;
     border: none;
     width: 0;
     height: 0;
-    text-align: center;
+    text-align: left;
     color: darkblue;
-    font-size: 22px;
+    font-size: 1.25rem;
     background-color: white;
-    transition: 300ms ease-in-out;
+    transition: $delay ease-in-out;
+    &:focus {
+      outline: none;
+      border: 2px solid skyblue;
+      border-radius: 4px;
+    }
+  }
+
+  &__header {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+  }
+
+  &__deleted {
+    margin-bottom: 5px;
+    color: dimgray;
   }
 }

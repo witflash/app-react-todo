@@ -11,7 +11,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Learn React with Todo MVC</h1>
         </header>
-        <main>
+        <main className="App-container">
           <TodoList />
         </main>
       </div>

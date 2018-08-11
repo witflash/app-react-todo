@@ -18,19 +18,15 @@ class TodoItem extends Component {
 
   editTodo() {
     const listener = e => {
-      console.log('e.target: ', e.target);
-      if (e.target === this._inputEdit) {
-        return;
-      }
       this.updateTodo(e);
-      document.removeEventListener('click', listener);
+      this._inputEdit.removeEventListener('click', listener);
     };
     this.setState({
       currentClass: this.classes.active,
     });
     this._inputEdit.value = this.props.todo.value;
     this._inputEdit.focus();
-    document.addEventListener('click', listener);
+    this._inputEdit.addEventListener('blur', listener);
   }
 
   updateTodo(e) {
